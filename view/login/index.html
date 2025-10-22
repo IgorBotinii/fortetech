@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forte Tech - Tela de Login</title>
+    <link href="/css/login/login.css" rel="stylesheet">
+    <link rel="icon" href="/images/ico_mini_ft.png">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="/images/logo.jpg" width="260px" style="margin-top: -10px;">
+        </div>
+         
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" id="nome_user" placeholder=" " required>
+                <label class="label">Usuário</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="senha_user" placeholder=" " required>
+                <label class="label">Senha</label>
+            </div>
+
+            <button type="submit" class="btn-login">Entrar</button>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 10px; cursor: pointer; font-size: 14px;">
+                <p id="lblesquecisenha" style="color: red; margin: 0;" onclick="abrirTelaEsqueciSenha()">Perdi meu Acesso</p>
+            </div>
+        </form>
+
+        <div class="contact-info">
+            <h4>Suporte:</h4> 
+            <p>Segunda - Quinta 08:00 - 18:00 / Sexta: 08:00 - 17:00 / Sábado: 14:00 - 16:00</p>
+            <img src="/images/NODE.png" class="ico-mpxc">
+        </div>
+
+        <div class="footer">
+            <p>Versão do Sistema: 0.1.9</p>
+        </div>
+    </div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const nome_user = document.getElementById('nome_user').value.trim();
+    const senha_user = document.getElementById('senha_user').value.trim();
+
+    if (!nome_user || !senha_user) {
+        alert('Preencha usuário e senha.');
+        return;
+    }
+
+    const url = `/LoginDoUsuarios?nome_user=${encodeURIComponent(nome_user)}&senha_user=${encodeURIComponent(senha_user)}`;
+
+    fetch(url)
+        .then(async response => {
+            if (response.status === 404) {
+                alert('Usuário ou senha incorretos.');
+                return null;
+            }
+
+            if (!response.ok) {
+                const text = await response.text();
+                throw new Error(`Erro do servidor (${response.status}): ${text}`);
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            if (!data) return;
+
+            localStorage.setItem("user", JSON.stringify(data));
+            localStorage.setItem("userName", data.nome_user);
+            localStorage.setItem("PermUser", data.permissao_analise_critica_user || "Nenhuma");
+
+            window.location.href = '/home.html';
+        })
+        .catch(error => {
+            console.error('Erro ao fazer login:', error);
+            alert('Erro ao conectar ao servidor.');
+        });
+});
+</script>
+
+</body>
+</html>
