@@ -1,8 +1,8 @@
 const express = require('express');
 const Router = express.Router();
-const conexao = require('../../config/db');
+const db = require('../../config/db'); // Pool de conexões com promessa
 
-Router.get('/LoginDoUsuarios', (req, res) => {
+Router.get('/LoginDoUsuarios', async (req, res) => {
   res.set('Cache-Control', 'no-store');
   const { nome_user, senha_user } = req.query;
 
@@ -11,18 +11,21 @@ Router.get('/LoginDoUsuarios', (req, res) => {
   }
 
   const sql = 'SELECT * FROM ft_usuarios WHERE nome_user = ? AND senha_user = ?';
-  conexao.query(sql, [nome_user, senha_user], (err, results) => {
-    if (err) {
-      console.error('Erro ao consultar usuário:', err);
-      return res.status(500).json({ message: 'Erro ao consultar usuários.' });
-    }
+
+  try {
+    const [results] = await db.query(sql, [nome_user, senha_user]);
+
     if (results.length === 0) {
       return res.status(404).json({ message: 'Usuário não encontrado.' });
     }
 
-    const { senha_user, ...userWithoutPassword } = results[0];
+    const { senha_user: _, ...userWithoutPassword } = results[0];
     res.json(userWithoutPassword);
-  });
+
+  } catch (err) {
+    console.error('Erro ao consultar usuário:', err);
+    res.status(500).json({ message: 'Erro ao consultar usuários.' });
+  }
 });
 
 module.exports = Router;
