@@ -2,11 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config();
+const dotenv = require('dotenv');
 
 const ambiente = process.env.NODE_ENV || 'desenv';
-const app = express();
+dotenv.config({ path: `./config/env/.env.${ambiente}` });
 
+const app = express();
 app.use(cors());
 app.use(express.json());
 
@@ -37,7 +38,7 @@ app.get('/', (req, res) => {
 });
 
 // === SERVIDOR ===
-const PORT = process.env.PORT || 3010;
+const PORT = process.env.PORT;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Servidor rodando em modo ${ambiente.toUpperCase()} - http://localhost:${PORT}`);
 });
