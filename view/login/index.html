@@ -76,7 +76,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             localStorage.setItem("userName", data.nome_user);
             localStorage.setItem("PermUser", data.permissao_analise_critica_user || "Nenhuma");
 
-            window.location.href = '/home.html';
+            window.location.href = '/view/home/home.html';
+
         })
         .catch(error => {
             console.error('Erro ao fazer login:', error);

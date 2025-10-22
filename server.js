@@ -30,6 +30,8 @@ fs.readdirSync(rotasDir).forEach(pasta => {
 
 // === FRONT-END LOGIN ===
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/view', express.static(path.join(__dirname, 'view')));
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'view/login/index.html'));
 });

@@ -1,0 +1,560 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f4; 
+}
+
+/* HEADER */
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.IconLogout{
+    height: 26px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+
+
+#txt_lateral {
+    color: #333;
+    margin-top: 67px;
+    text-align: center;
+    margin-left: -1px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#menu_app {
+    width: 30px;
+    height: 25px;
+    margin-top: 20px; /* Ajusta a margem */
+}
+
+/* Barra superior */
+.barra_acima_romaneio {
+    width: calc(100% - 200px); /* Ajusta para ficar ao lado da barra lateral */
+    background: #ffffff;
+    color: black;
+    height: 60px; /* Ajusta a altura */
+    position: fixed;
+    left: 200px; /* Alinha com a largura da barra lateral */
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
+}
+
+/* CONTAINER PRINCIPAL */
+.container_apps {
+    margin-left: 210px; /* Ajusta para dar espaço para a barra lateral */
+    margin-top: 70px; /* Ajusta para dar espaço para a barra superior */
+    padding: 20px;
+    width: calc(100% - 220px); /* Ajusta a largura */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
+    position: fixed;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Tipos de aplicativos */
+.tipos_apps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tipo {
+    background: #ff4e02e7;
+    color: #fff;
+    width: 150px;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em; 
+}
+
+.tipo:hover {
+    background: #e44704;
+}
+
+/* Seleção de aplicativos */
+.app-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.app-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 200px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.app-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+.app-icon img {
+    width: 100%; /* Ajusta a largura da imagem ao contêiner */
+    height: auto;
+}
+
+.app-info {
+    text-align: center;
+}
+
+.app-info h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.indetificador_tipo {
+    display: none;
+}
+
+#txt {
+    color: #383737;
+    font-weight: bold;
+}
+
+#txt-1 {
+    font-weight: bold;
+    color: #383737;
+    padding: 10px;
+    font-size: 18px;
+}
+
+
+
+.bloco-principal {
+    display: flex;
+    width: auto;
+    position: absolute;
+    margin-top: -530px;
+    margin-left: 530px;
+  }
+
+
+
+.cards-demais-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+.info-gp-forte h2 {
+    margin-bottom: 10px;
+}
+
+.info-gp-forte p {
+    margin-bottom: 4px;
+    color: rgb(57, 62, 66);
+}
+
+.info-gp-forte-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 140px;
+    height: 80px;
+    object-fit: contain; /* Garante que a imagem se ajuste corretamente */
+}
+.logo_gp_forte{
+    width: 90px;
+    margin-left: -20px;
+}
+
+#sext_app{
+    width: 80px;
+    text-align: center;
+    position: inherit;
+
+}
+.botoes_collect{
+    text-align: center;
+    margin-top: 30px;
+}
+.txt-titulo{
+    color: #333;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+
+}
+
+.txt-titulo-logou{
+    color: #333;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+
+}
+
+
+.substitulo {
+    margin-top: auto;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}
+#txt-dms-link {
+    margin-top: 10px;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* Sidebar container */
+.sidebar {
+    width: 190px;
+    background-color: #f4f4f4; 
+    padding: 7px;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    overflow-y: auto; /* <-- adiciona a barra de rolagem automática */
+
+}
+
+
+/* Icon styling */
+.icon {
+    margin-right: 12px;
+    font-size: 18px; 
+    transition: transform 0.4s ease;
+    transform: rotate(90deg);
+    transform-origin: top 0;
+
+}
+
+
+
+/* Title styling */
+.menu-title {
+    font-size: 10px; 
+    font-weight: bold;
+}
+
+.menu-title-usuario{
+    font-size: 11px; 
+    font-weight: bold;
+}
+
+.submenu {
+    display: none;
+    position: fixed;
+    background-color: #e44704;
+    padding: 10px 20px;
+    border-left: 2px solid #000000;
+    font-size: 13px;
+    color: #ffffff;
+    width: 230px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+.submenu.visible {
+    display: block;
+}
+
+
+.submenu li {
+    padding: 1px 0;
+    list-style: none;
+}
+.submenu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 12px;
+}
+.submenu a:hover {
+    color: #000000;
+}
+/* Submenu item hover effect */
+.submenu li:hover {
+    color: #161718;
+}
+
+.sidebar a {
+    display: block; /* Faz com que o link ocupe toda a largura do item de menu */
+    padding: 5px; /* Adiciona padding ao redor do texto */
+    color: #ecf0f1; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.1s; /* Efeito de transição na cor */
+}
+.sidebar a:hover {
+    color: #161718; /* Cor do texto ao passar o mouse */
+}
+
+/* Estilo do parágrafo dentro do cartão */
+.card_app p {
+    margin-top: 15px; /* Espaçamento acima do subtítulo */
+    font-size: 14px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito para o subtítulo */
+    color: #333; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+}
+/* Opcional: se houver um link dentro do parágrafo */
+.card_app a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: #333;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: block; /* Faz com que o link ocupe toda a área do parágrafo */
+}
+
+/* Opcional: estilo do link ao passar o mouse */
+.card_app a:hover {
+    color: #f36c32; /* Cor do texto ao passar o mouse */
+}
+  /* Estilo do botão do assistente */
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chat-container img {
+    width: 200px;
+    cursor: pointer;
+}
+
+/* Estilo do chat pop-up (ainda maior e acima do botão) */
+.chat-box {
+    display: none;
+    position: fixed;
+    bottom: 10px; /* Ajustado para ficar mais acima do botão */
+    right: 30px;
+    z-index: 9999;
+    width: 650px; /* Mantida a largura */
+    height: 620px; /* Aumentada a altura */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Cabeçalho do chat */
+.chat-header {
+    background: #e74e0f;
+    color: white;
+    padding: 15px;
+    font-size: 20px; /* Fonte um pouco maior */
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+
+/* Botão de fechar */
+.chat-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 20px; /* Aumentado para melhor visibilidade */
+    cursor: pointer;
+}
+
+/* Área das mensagens */
+.chat-messages {
+    height: 470px; /* Aumentado para comportar mais mensagens */
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Campo de entrada */
+.chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px; /* Fonte maior para melhor usabilidade */
+}
+
+/* Botão de enviar */
+.chat-input button {
+    background: #e74e0f;
+    color: white;
+    border: none;
+    padding: 14px 18px;
+    border-radius: 5px;
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.chat-input button:hover {
+    background: #bb420e;
+}
+
+/* Estilo das mensagens */
+.message {
+    max-width: 85%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    word-wrap: break-word;
+    font-size: 14px; /* Mensagens mais legíveis */
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #e74e0f;
+    color: white;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: #ddd;
+    color: black;
+}
+.linha {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;    
+    background: transparent;
+}
+
+.info-gp-forte {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.card_app {
+    width: 130px; /* largura padrão do card */
+    height: auto;
+    text-align: center;
+    background-color: rgb(172, 172, 172);
+    border-radius: 8px;
+    padding: 2px;
+    transition: transform 0.2s ease;
+}
+
+.card_app:hover {
+    transform: translateY(-5px);
+}
+
+.card_app img.info-gp-forte-item {
+    width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+    background: white;
+    border-radius: 5px;
+}
+
+.card_app p {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.card_app:hover{
+    background-color: #e74e0f;
+}
+.titulo{
+    background-color: transparent;
+    width: 190px;
+    position: absolute;
+
+    color: #333;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+}
+
+#imagem-aviso {
+    cursor: grab;
+}
+
+#imagem-aviso.dragging {
+    cursor: grabbing;
+}
+#imagem-aviso {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+.avisos-slideshow-container {
+    width: 500px;
+    height: 520px;
+    
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.486); /* sombra suave e uniforme */
+    display: flex;
+    justify-content: center;
+
+}
+
+
+#slide-wrapper {
+    display: flex;
+    width: 1500px; /* 3x 500px */
+    height: 100%;
+    transition: transform 0.4s ease;
+    transform: translateX(-500px); /* Começa no meio */
+}
+
+.slide {
+    width: 500px;
+    height: 100%;
+    object-fit: contain;
+    flex-shrink: 0;
+    padding: 0 5px;
+    user-select: none;
+    pointer-events: none;
+}

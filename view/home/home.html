@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ForteTech - Inicio</title>
+    <!-- LINKS CSS E BACKEND -->
+    <link rel="stylesheet" href="/css/home/home.css">
+    <link rel="icon" href="/images/ico_mini_ft.png">
+    <script src="Javascript/Gerais/filtros.js" type="text/javascript"></script>
+    <!-- <link href="/Login.html"> -->
+
+
+    
+    <!-- FIM DOS LINKS -->
+</head>
+<body>
+    <header>
+ <div id="sidebar-placeholder"></div>
+
+ 
+  <script>
+async function carregarSidebarComScripts() {
+  const res = await fetch("/componentes/sidebar.html?v=" + Date.now());
+  const html = await res.text();
+  const container = document.getElementById("sidebar-placeholder");
+  container.innerHTML = html;
+
+  const scripts = container.querySelectorAll("script");
+
+  for (const script of scripts) {
+    const novoScript = document.createElement("script");
+
+    if (script.src) {
+      await new Promise((resolve, reject) => {
+        novoScript.onload = resolve;
+        novoScript.onerror = reject;
+        novoScript.src = script.src;
+        document.head.appendChild(novoScript);
+      });
+    } else {
+      novoScript.textContent = script.textContent;
+      document.head.appendChild(novoScript);
+    }
+  }
+
+  // ✅ Depois de garantir que todos os scripts foram carregados, chama a função
+  if (typeof window.aplicarPermissoesUsuario === "function") {
+    window.aplicarPermissoesUsuario();
+  } else {
+    console.warn("Função aplicarPermissoesUsuario não encontrada.");
+  }
+}
+
+carregarSidebarComScripts();
+
+</script>
+        <div class="barra_acima_romaneio">
+            <p class="txt-titulo">Tela Inicial </p>
+            <img src="/images/logout.png" onclick="sair()" id="logoutIcon" class="IconLogout">
+             <p class="txt-titulo-logou" onclick="sair()">Log-out</p>
+        </div>
+    </header>
+    <main class="container_apps">
+
+        <div class="avisos-slideshow-container">
+            <img id="imagem-aviso" src=""/>
+
+        </div>
+        
+        
+        <div class="bloco-principal">
+            <div class="titulo">
+                <h2>Links Externos</h2>
+            </div>
+            <div class="info-gp-forte" style="margin-top: 35px;">
+                <div class="card_app">
+                    <a href="https://fortefixadores.omegasoft.net.br/Fortefixadores/sgw0001.do?method=login" target="_blank" rel="noopener noreferrer">
+                        <img class="info-gp-forte-item" src="/images/logo_Uno_erp.png" alt="Sistema UNO">
+                        <P style="margin-top: -5PX;">UNO</P>
+                    </a>
+                    
+                </div>
+                <div class="card_app">
+                    <a href="https://bateponto.pontotel.com.br/#/" target="_blank" rel="noopener noreferrer">
+                        <img class="info-gp-forte-item" src="/images/logo_ponto_tel.png" alt="Sistema PontoTel" >
+                        <P style="margin-top: -5PX;">Ponto</P>
+                    </a>
+                </div>
+                <div class="card_app">
+                    <a href="https://fortefixadorescombr.sharepoint.com/sites/GrupoForte/SitePages/Indicadores-de-Desempenho.aspx" target="_blank" rel="noopener noreferrer">
+                        <img class="info-gp-forte-item" src="/images/INDICADORLOGO.png" alt="Sistema PontoTel" >
+                        <P style="margin-top: -5PX;">Indicadores</P>
+                    </a>
+                </div>
+
+
+
+                <div class="card_app">
+                    <a href="https://fortefixadorescombr-my.sharepoint.com/:f:/g/personal/sistema_grupoforte_ind_br/EvcmUcK-mWhOuzRYU39l0X8BO_yHOBidfN5pSkSSsvxh_g"  target="_blank" rel="noopener noreferrer">
+                        <img class="info-gp-forte-item" src="/images/icone_desenhos_norm_sgi.png" alt="Sistema PontoTel">
+                        <P style="margin-top: -5PX;">Documentos do SGI</P>
+                    </a>
+                </div>
+
+                <div class="card_app">
+                    <a href="https://fortefixadorescombr-my.sharepoint.com/:f:/g/personal/sistema_grupoforte_ind_br/Es0Ag7b_9tdFvQQY5NTDw8UBfBg-BgJOyBo-adIN3qDbKA" target="_blank" rel="noopener noreferrer">
+                        <img class="info-gp-forte-item" src="/images/icone_desenhos_normas.png" alt="Sistema PontoTel" >
+                        <p style="margin-top: -5PX;">Des, norm e instru</p>
+                    </a>
+                </div>
+        
+        
+            <div class="card_app">
+                <a href="https://grupoforte.ind.br/" target="_blank" rel="noopener noreferrer">
+                    <img class="info-gp-forte-item" src="/images/logo_gp_frte.png" alt="Sistema PontoTel" >
+                    <P style="margin-top: -5PX;">Site</P>
+                </a>
+            </div>
+
+            <div class="card_app">
+                <a href="http://grupoforte.ind.br/relatar-denuncia/" target="_blank" rel="noopener noreferrer">
+                    <img class="info-gp-forte-item" src="/images/denuncia.png" width="850px" style="position: a;"  >
+                    <P style="margin-top: -5PX;">Relatar Denúncia</P>
+                </a>
+            </div>
+            </div>
+        </div>
+    </main>
+    <!-- SCRIPT PARA PODER RODAR O MENU E O SUBMENU -->
+    <script>
+
+
+    function TelaemDesenv(){
+        alert("Tela em Desenvolvimento, por favor, aguarde lançamento");
+    };
+    function toggleSubMenu(clickedId) {
+    const menuItems = document.querySelectorAll('.menu-item-sidebar');
+    const clickedMenuItem = document.getElementById(clickedId);
+    const clickedSubmenu = clickedMenuItem.querySelector('.submenu');
+
+    const isClickedSubmenuVisible = clickedSubmenu.classList.contains('visible');
+
+    // Fecha todos os outros
+    document.querySelectorAll('.submenu').forEach(submenu => {
+        submenu.classList.remove('visible');
+    });
+
+    if (!isClickedSubmenuVisible) {
+        clickedSubmenu.classList.add('visible');
+
+        // Calcula posição do botão
+        const rect = clickedMenuItem.getBoundingClientRect();
+
+        clickedSubmenu.style.top = rect.top + 'px';  // onde o botão está
+clickedSubmenu.style.left = (rect.right + 10) + 'px'; // +10px de distância
+    }
+}
+
+
+// document.getElementById('logoutIcon').addEventListener('click', function() {
+//     localStorage.clear(); // Limpa tudo
+//     window.location.href = 'login.html';
+// });
+
+
+</script> 
+
+<script>
+  
+
+function converterMarkdown(texto) {
+    // Negrito **texto**
+    texto = texto.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // Itálico *texto*
+    texto = texto.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+    // Corrigir lista numerada diretamente no corpo
+    texto = texto.replace(/(^|\n)(\d+)\.\s+(.*?)(?=\n\d+\.|\n*$)/gs, (match, p1, num, conteudo) => {
+        return `${p1}<li>${conteudo.trim()}</li>`;
+    });
+
+    // Agrupar todos os <li> em <ol>
+    texto = texto.replace(/(<li>.*?<\/li>)/gs, '<ol>$1</ol>');
+
+    // Parágrafos e quebras de linha
+    texto = texto.replace(/\n{2,}/g, '</p><p>'); // 2+ quebras = novo parágrafo
+    texto = texto.replace(/\n/g, '<br>');         // 1 quebra = br
+
+    return `<p>${texto}</p>`;
+}
+
+function sair(){
+    window.location.replace("/Login.html");
+    localStorage.removeItem("token");
+    }
+
+
+
+
+</script>
+<script src="/componentes/sidebar.js"></script>
+<script src="/Javascript/home/avisos_comand.js"></script>
+<script src="/Javascript/home/funcoesDoc.js"></script>
+<script src="/Javascript/ADM/auth.js?v=1"></script>
+
+    <!-- <script src="/ls.js"></script> -->
+
+
+
+
+
+</body>
+</html>
