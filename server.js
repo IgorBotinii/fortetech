@@ -4,15 +4,20 @@ const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv');
 
-const ambiente = process.env.NODE_ENV || 'desenv';
-dotenv.config({ path: `./config/env/.env.${ambiente}` });
+// === Detecta o ambiente corretamente ===
+const ambiente = process.env.NODE_ENV || 'producao';
+const envPath = path.resolve(__dirname, `./config/.env.${ambiente}`);
+dotenv.config({ path: envPath });
+
+console.log(`🧩 Ambiente detectado: ${ambiente}`);
+console.log(`🧩 Arquivo .env carregado: ${envPath}`);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Conexão DB
-require('./config/db');
+// === Conexão DB ===
+require('./config/db.js');
 
 // === AUTOLOAD DE ROTAS ===
 const rotasDir = path.join(__dirname, 'controller');
@@ -38,7 +43,7 @@ app.get('/', (req, res) => {
 });
 
 // === SERVIDOR ===
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3020;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Servidor rodando em modo ${ambiente.toUpperCase()} - http://localhost:${PORT}`);
 });
