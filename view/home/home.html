@@ -17,45 +17,57 @@
 </head>
 <body>
     <header>
- <div id="sidebar-placeholder"></div>
-
  
-  <script>
-async function carregarSidebarComScripts() {
-  const res = await fetch("/componentes/sidebar.html?v=" + Date.now());
-  const html = await res.text();
-  const container = document.getElementById("sidebar-placeholder");
-  container.innerHTML = html;
+  <div id="sidebar-placeholder"></div>
+    <script>
+    async function carregarSidebarComScripts() {
+        try {
+            const res = await fetch("/components/sidebar.html?v=" + Date.now());
+            if (!res.ok) {
+                throw new Error(`Erro ao carregar o componente: ${res.statusText}`);
+            }
+            const html = await res.text();
+            const container = document.getElementById("sidebar-placeholder");
 
-  const scripts = container.querySelectorAll("script");
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
 
-  for (const script of scripts) {
-    const novoScript = document.createElement("script");
+            
+            const styles = tempDiv.querySelectorAll('style');
+            styles.forEach(style => {
+                const newStyle = document.createElement('style');
+                newStyle.textContent = style.textContent;
+                document.head.appendChild(newStyle); 
+            });
 
-    if (script.src) {
-      await new Promise((resolve, reject) => {
-        novoScript.onload = resolve;
-        novoScript.onerror = reject;
-        novoScript.src = script.src;
-        document.head.appendChild(novoScript);
-      });
-    } else {
-      novoScript.textContent = script.textContent;
-      document.head.appendChild(novoScript);
+            styles.forEach(s => s.remove());
+            const scripts = tempDiv.querySelectorAll('script');
+            scripts.forEach(s => s.remove());
+
+            container.innerHTML = tempDiv.innerHTML; 
+            scripts.forEach(script => {
+                const novoScript = document.createElement("script");
+                if (script.src) {
+                    novoScript.src = script.src;
+                    novoScript.async = false;
+                    document.body.appendChild(novoScript);
+                } else {
+                   
+                    novoScript.textContent = script.textContent;
+                    document.body.appendChild(novoScript);
+                }
+            });
+            if (typeof window.aplicarPermissoesUsuario === "function") {
+                window.aplicarPermissoesUsuario();
+            } else {
+                console.warn("Função aplicarPermissoesUsuario não encontrada. Certifique-se de que ela esteja definida globalmente no seu script principal.");
+            }
+        } catch (error) {
+            console.error("Erro ao carregar a sidebar:", error);
+        }
     }
-  }
-
-  // ✅ Depois de garantir que todos os scripts foram carregados, chama a função
-  if (typeof window.aplicarPermissoesUsuario === "function") {
-    window.aplicarPermissoesUsuario();
-  } else {
-    console.warn("Função aplicarPermissoesUsuario não encontrada.");
-  }
-}
-
-carregarSidebarComScripts();
-
-</script>
+    carregarSidebarComScripts();
+    </script>
         <div class="barra_acima_romaneio">
             <p class="txt-titulo">Tela Inicial </p>
             <img src="/images/logout.png" onclick="sair()" id="logoutIcon" class="IconLogout">
