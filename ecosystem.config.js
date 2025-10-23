@@ -7,14 +7,6 @@ module.exports = {
       env: {
         NODE_ENV: 'desenv'
       }
-    },
-    {
-      name: 'fortetech_producao',
-      script: 'server.js',
-      watch: false,
-      env: {
-        NODE_ENV: 'producao'
-      }
     }
   ]
 };
