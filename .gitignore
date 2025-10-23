@@ -140,3 +140,4 @@ vite.config.ts.timestamp-*
 
 # PM2 configuration file
 ecosystem.config.js
+server.js
