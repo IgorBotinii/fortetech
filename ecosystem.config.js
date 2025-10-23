@@ -1,11 +1,11 @@
 module.exports = {
   apps: [
     {
-      name: 'fortetech_producao',
+      name: 'fortetech_desenv',
       script: 'server.js',
       watch: false,
       env: {
-        NODE_ENV: 'producao'
+        NODE_ENV: 'desenv'
       }
     }
   ]

@@ -5,7 +5,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 
 // === Detecta o ambiente corretamente ===
-const ambiente = process.env.NODE_ENV || 'producao';
+const ambiente = process.env.NODE_ENV;
 const envPath = path.resolve(__dirname, `./config/.env.${ambiente}`);
 dotenv.config({ path: envPath });
 
@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 });
 
 // === SERVIDOR ===
-const PORT = process.env.PORT || 3020;
+const PORT = process.env.PORT;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Servidor rodando em modo ${ambiente.toUpperCase()} - http://localhost:${PORT}`);
 });
