@@ -19,20 +19,28 @@ app.use(express.json());
 // === Conexão DB ===
 require('./config/db.js');
 
-// === AUTOLOAD DE ROTAS ===
+// === AUTOLOAD DE ROTAS (recursivo) ===
 const rotasDir = path.join(__dirname, 'controller');
-fs.readdirSync(rotasDir).forEach(pasta => {
-  const subpasta = path.join(rotasDir, pasta);
-  if (fs.lstatSync(subpasta).isDirectory()) {
-    fs.readdirSync(subpasta).forEach(arquivo => {
-      if (arquivo.startsWith('rotas') && arquivo.endsWith('.js')) {
-        const rota = require(path.join(subpasta, arquivo));
+function carregarRotas(dir) {
+  fs.readdirSync(dir, { withFileTypes: true }).forEach((item) => {
+    const fullPath = path.join(dir, item.name);
+    if (item.isDirectory()) {
+      carregarRotas(fullPath); // busca nas subpastas
+    } else if (item.isFile() && item.name.endsWith('.js')) {
+      try {
+        const rota = require(fullPath);
         app.use('/', rota);
-        console.log(`✅ Rota carregada: ${arquivo}`);
+        console.log(`✅ Rota carregada: ${fullPath}`);
+      } catch (err) {
+        console.error(`❌ Erro ao carregar rota ${fullPath}:`, err.message);
       }
-    });
-  }
-});
+    }
+  });
+}
+
+// Executa o autocarregamento
+carregarRotas(rotasDir);
+
 
 // === FRONT-END LOGIN ===
 app.use(express.static(path.join(__dirname, 'public')));
