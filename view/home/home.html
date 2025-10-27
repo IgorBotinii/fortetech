@@ -17,7 +17,7 @@
   <div id="sidebar-placeholder"></div>
     <script>
     async function carregarSidebarComScripts() {
-        try {
+        try {""
             const res = await fetch("/components/sidebar.html?v=" + Date.now());
             if (!res.ok) {
                 throw new Error(`Erro ao carregar o componente: ${res.statusText}`);
@@ -213,9 +213,7 @@ function sair(){
 
 </script>
 <script src="/componentes/sidebar.js"></script>
-<script src="/Javascript/home/avisos_comand.js"></script>
-<script src="/Javascript/home/funcoesDoc.js"></script>
-<script src="/Javascript/ADM/auth.js?v=1"></script>
+<script src="/js/home/avisos_comand.js"></script>
 
     <!-- <script src="/ls.js"></script> -->
 
