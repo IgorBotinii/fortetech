@@ -46,33 +46,33 @@ header {
     margin-top: 20px; /* Ajusta a margem */
 }
 
-/* Barra superior */
-.barra_acima_romaneio {
-    width: calc(100% - 200px); /* Ajusta para ficar ao lado da barra lateral */
-    background: #ffffff;
-    color: black;
-    height: 60px; /* Ajusta a altura */
-    position: fixed;
-    left: 200px; /* Alinha com a largura da barra lateral */
-    top: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
-}
 
 /* CONTAINER PRINCIPAL */
 .container_apps {
-    margin-left: 210px; /* Ajusta para dar espaço para a barra lateral */
-    margin-top: 70px; /* Ajusta para dar espaço para a barra superior */
+    margin-left: 200px; /* Ajusta para dar espaço para a barra lateral */
+    margin-top: 50px; /* Ajusta para dar espaço para a barra superior */
     padding: 20px;
-    width: calc(100% - 220px); /* Ajusta a largura */
+    height: 100vh;
+    width: calc(100% - 140px); /* Ajusta para ficar ao lado da barra lateral */
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
     position: fixed;
 }
-
+.barra_acima_padrao {
+    width: calc(100% - 186px); 
+    background: #ffffff;
+    height: 40px; 
+    position: fixed;
+    left: 186px; 
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 3px solid #e74e0f;
+    transition: all 0.35s ease-in-out;
+    z-index: 10; /* Garante que fique acima do conteúdo */
+}
 h1 {
     margin-bottom: 20px;
     color: #333;
@@ -557,4 +557,311 @@ h1 {
     padding: 0 5px;
     user-select: none;
     pointer-events: none;
+}
+
+
+/* Estilos Globais e de Layout da Página Principal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    transition: margin-left 0.3s ease;
+}
+
+body.sidebar-fechada {
+    margin-left: -130px; /* sidebar recolhida */
+}
+
+/* Regra universal para barra superior acompanhar */
+.barra_acima_padrao {
+    width: calc(100% - 186px);
+    left: 186px;
+    transition: all 0.3s ease;
+}
+
+body.sidebar-fechada .barra_acima_padrao {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+
+/* Barras superior e principal (ajustes de layout da página principal em relação à sidebar) */
+.barra_acima_padrao {
+    width: calc(100% - 186px); 
+    background: #ffffff;
+    height: 40px; 
+    position: fixed;
+    left: 186px; 
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 3px solid #e74e0f;
+    transition: all 0.35s ease-in-out;
+    z-index: 10; /* Garante que fique acima do conteúdo */
+}
+.container_inicial, .containerInfoTicket{
+    margin-left: 186px; 
+    margin-top: 70px; /* Ajuste para não colidir com a barra superior */
+    padding: 20px;
+    transition: all 0.35s ease-in-out;
+    
+}
+
+.cont_permissaoUser{
+    margin-left: 186px; 
+    margin-top: 70px; /* Ajuste para não colidir com a barra superior */
+    transition: all 0.35s ease-in-out;
+}
+
+.txt-titulo{
+    color: rgb(0, 0, 0);
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    display: flex; /* Flexbox para alinhamento */
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center; /* Alinha verticalmente */
+    z-index: 9999; /* Garante que está acima de tudo */
+}
+/* Estilo do GIF */
+#loading-screen img {
+    width: 400px;
+    height: 400px;
+    background: transparent;
+}
+
+#loading-screen p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+
+.botaoPadrao{
+    color: white;
+    border: none;
+}
+
+
+.table-container {
+    margin-top: 150px;
+    height: calc(100vh - 210px); /* ajustável: use 100vh se quiser ocupar toda a altura */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    
+}
+
+
+
+
+
+.iconesmenores{
+    height: 20px;
+    cursor: pointer;
+}
+
+.container_filtros{
+    margin-top: -46px;
+    margin-bottom: -125px;
+    width: 100%;
+    height: 105px;
+    border-radius: 9px;
+    box-shadow:  0px 2px 8px rgba(0, 0, 0, 0.315);
+}
+.campo{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    
+}
+.linha {
+    display: flex;
+    margin-left: 6px;
+    margin-top: 16px;
+    padding: 8px;
+    gap: 16px;
+}
+
+.labletxt{
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.BoxPadrao {
+    border-radius: 6px;
+    border: 1px solid #8f8f8f; /* Cinza claro, sutil */
+    background-color: #fff;
+    
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra suave e discreta */
+}
+
+
+
+.container-listas-permissoes {
+    display: flex;
+    gap: 20px;
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+
+
+
+.ico_peq{
+    height: 20px;
+    cursor: pointer;
+}
+
+.btlaranja{
+    background-color:#e74e0f;
+}
+.txtSituacao.nova {
+    color: rgb(0, 38, 255);
+    font-weight: bold;
+}
+
+.txtSituacao.finalizada {
+    color: green;
+    font-weight: bold;
+}
+
+
+/* PADRAO DOS BOTOES */
+.botaoPadrao{
+    border-radius: 7px;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 3px;
+    height: 25px;
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+    border: none;
+}
+
+.botaoPadrao:hover {
+    transform: translateZ(8px) scale(1.05);
+}
+
+
+/* PADRAO DE ICONES NAS TABELAS */
+.iconesmenores{
+    height: 20px;
+    cursor: pointer;
+}
+
+
+/* ORGANIZAR CAMPO LABLE + INPUT */
+.campo{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.linha {
+    display: flex;
+    margin-left: 6px;
+    margin-top: 16px;
+    padding: 8px;
+}
+
+.labletxt{
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+/* PADRAO DOS INPUTS */
+
+.BoxPadrao {
+    border-radius: 6px;
+    border: 1px solid #8f8f8f; /* Cinza claro, sutil */
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra suave e discreta */
+}
+
+.table-container {
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+#tabelaCustos {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#tabelaCustos thead th {
+    background-color: #e74e0f;
+    color: white;
+    height: 15px;
+    padding: 4px;
+    font-size: 12px;
+    text-align: left;
+    border: 1px solid white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+#tabelaCustos tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+
+#tabelaCustos tbody td {
+    padding: 6px 8px;
+    font-size: 13px;
+  
+    word-wrap: break-word;
+    border: 1px solid #eee; 
+}
+
+
+
+
+input:focus {
+    outline: none;
+    box-shadow: none; /* opcional: remove qualquer sombra que possa vir junto */
+}
+
+
+.codTicket{
+    color: #e74e0f;
+    font-weight: bold;
+    width: 62px;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+    font-size: 13px;
+
+}
+
+.bxDesc{
+    width: 550px;
+    height: 400px;
+    padding: 3px;
+}
+
+.btVoltar{
+    background-color: #e74e0f;
+}
+
+.brGravar{
+    background-color: green;
+}
+.botoesEdit{
+    display: flex;
+    margin-left: auto;
+    gap: 15px;
 }

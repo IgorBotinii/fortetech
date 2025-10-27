@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.barra_acima_padrao {
+    width: calc(100% - 186px); 
+    background: #ffffff;
+    height: 40px; 
+    position: fixed;
+    left: 186px; 
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 3px solid #e74e0f;
+    transition: all 0.35s ease-in-out;
+    z-index: 10; /* Garante que fique acima do conteúdo */
+}
+
+body.sidebar-fechada .barra_acima_padrao {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+
+.txt-titulo {
+    color: #333;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    background-color: #ffffff;
+    display: block;
+}
+
+/* Ajuste do conteúdo principal quando a sidebar está aberta (padrão) */
+.container_meio {
+    margin-left: 206px; 
+    margin-top: 70px; 
+    padding: 20px;
+    height: 90vh;
+    width: calc(100% - 220px); 
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.35s ease-in-out; /* para suavizar o movimento */
+}
+
+/* Quando a sidebar está FECHADA */
+body.sidebar-fechada .container_meio {
+    margin-left: 70px; /* recuo menor igual ao da barra_acima_padrao */
+    width: calc(100% - 80px); /* acompanha o cálculo proporcional */
+}
+
+
+.substitulo {
+    margin-top: auto;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: local;
+}
+.bot_voltar {
+    color: #fff;
+    width: 150px;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: red;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* ******************************************************************************************************************* */
+
+.container_filtros {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* sombra suave */
+    margin-top: -8px;
+}
+
+
+.linha{
+    display: flex;
+    margin-left: 6px;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+}
+.BoxPadrao {
+    height: 18px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.BoxPadrao:focus {
+    border-color: #e74e0f;
+    box-shadow: 0 0 5px rgba(255, 94, 0, 0.5);
+}
+.BotaoBuscar{
+    background: #e74e0f;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+}
+
+.BotaoBuscar:hover{
+    background-color: #ee7e4e;
+    cursor: pointer;
+}
+
+.container-tabela-itens-doc{
+    width: 100%;
+}
+.container-tabela-itens-doc {
+    width: 100%;
+    height: calc(100vh - 250px);
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    
+
+}
+
+.tabela-wrapper {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.tabela-documentos {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px;
+}
+
+.tabela-documentos thead th {
+    position: sticky;
+    top: 0;
+    background-color: #e74e0f;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+    z-index: 1;
+    border-bottom: 2px solid #d35400;
+}
+
+.tabela-documentos tbody td {
+    padding: 4px;
+    border-bottom: 1px solid #ddd;
+    font-size: 13px;    
+}
+
+.tabela-documentos tbody tr:hover {
+    background-color: #fd7135; 
+    color: white;
+    cursor: pointer;
+}
+
+.tabela-documentos thead th:first-child,
+.tabela-documentos tbody td:first-child {
+    border-right: 1px solid #ddd;
+}
+
+/* Mantém a borda inferior entre linhas */
+.tabela-documentos tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Tela de carregamento */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    display: flex; /* Flexbox para alinhamento */
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center; /* Alinha verticalmente */
+    z-index: 9999; /* Garante que está acima de tudo */
+  }
+  
+  /* Estilo do GIF */
+  #loading-screen img {
+    width: 400px;
+    height: 400px;
+    background: transparent;
+  }
+  
+  #loading-screen p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+
+.tabela-documentos th,
+.tabela-documentos td {
+    border: 1px solid #ddd;
+    
+    
+}
+.checkboxfiltrosituacoes {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:bolder;
+    color: #333;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.checkboxfiltrosituacoes:hover {
+    background-color: #f5f5f5;
+}
