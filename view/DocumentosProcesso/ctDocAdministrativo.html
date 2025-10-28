@@ -6,11 +6,14 @@
     <title>Forte Tech - Docs Adm Geral</title>
     <link href="/css/DocumentosProcesso/docProcessoAdmGeral.css" rel="stylesheet">
     <link rel="icon" href="/images/ico_mini_ft.png">
+    <meta name="codTela" content="DCFT001">
+
 </head>
 <body>
     <div id="loading-screen" style="display: none;">
         <img src="/images/GIF CARREGANDO FORTE TECH (3).gif" alt="Carregando...">
     </div>
+    
 
     <!-- BARRA LATERAL -->
   <div id="sidebar-placeholder"></div>
@@ -132,14 +135,17 @@ window.addEventListener('beforeunload', function () {
 window.addEventListener('load', function () {
     localStorage.setItem('ProcessoAberto', "ctAdmGeral");
 });
-
+document.addEventListener("DOMContentLoaded", () => {
+    aplicarPermissoesTela("DCFT001"); // substitua pelo código da tela atual
+});
 
     </script>
 
 
 
+    <script src="/js/DocumentosProcesso/permCampos.js"></script>
     <script src="/js/DocumentosProcesso/tblDocAdmGeral.js"></script>
     <script src="/Javascript/Engenharia/Filtros.js"></script>
-    <script src="/Javascript/Gerais/prms.js"></script>
+    <!-- <script src="/Javascript/Gerais/prms.js"></script> -->
 </body>
 </html>
