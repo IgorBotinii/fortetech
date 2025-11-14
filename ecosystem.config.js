@@ -7,9 +7,9 @@ module.exports = {
       env: {
         NODE_ENV: "desenv"
       },
-      out_file: "NUL",
-      error_file: "NUL",
-      log_file: "NUL"
+      out_file: "C:/Users/Administrator/pm2_desenv/out.log",
+      error_file: "C:/Users/Administrator/pm2_desenv/error.log",
+      log_file: "C:/Users/Administrator/pm2_desenv/combined.log"
     }
   ]
-}
+};
